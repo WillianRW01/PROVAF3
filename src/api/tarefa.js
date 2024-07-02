@@ -53,17 +53,7 @@ class TarefaApi {
             return res.status(400).send({ error: `Erro ao listar tárefa ${e.message}`})
         }
     }
-    async validarToken (req,res,next)
-{
-    const token = req.headers.authorization;
-
-    try {
-        await controller.validarToken(token)
-        next();
-    } catch (error) {
-        return res.status(400).send({error:error.message})
-    }
-}
+   
 }
 
 module.exports = new TarefaApi()

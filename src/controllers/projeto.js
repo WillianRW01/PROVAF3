@@ -1,7 +1,5 @@
 const Projeto = require('../models/projeto')
-const jwt = require('jsonwebtoken');
 const UserController = require('../controllers/user')
-const {TOT_SECRET_KEY} = require ('../controllers/user')
 
 class ProjetoController{
     async criarProjeto(nome,descricao,id_usuario){
@@ -62,14 +60,6 @@ async deletarProjeto(id,id_usuario){
 
     return
 }
-async validarToken(token) {
-    try {
-        const payload = jwt.verify(token, TOT_SECRET_KEY);
-        return payload;
-    } catch (error) {
-        console.error('Token inválido:', error);
-        throw new Error('Token inválido');
-    }
-}
+
 }
 module.exports = new ProjetoController()

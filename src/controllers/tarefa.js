@@ -1,9 +1,5 @@
 const Tarefa = require('../models/tarefa');
-const ProjetoController = require('../controllers/projeto'); 
 const UserController = require ('../controllers/user')
-const jwt = require('jsonwebtoken');
-const {TOT_SECRET_KEY} = require ('../controllers/user')
-
 class TarefaController {
     async CriarTarefa(titulo, descricao, id_projeto, id_usuario) {
         if (!titulo || !descricao || !id_projeto || !id_usuario) {
@@ -68,15 +64,7 @@ class TarefaController {
 
         return;
     }
-    async validarToken(token) {
-        try {
-            const payload = jwt.verify(token, TOT_SECRET_KEY);
-            return payload;
-        } catch (error) {
-            console.error('Token inválido:', error);
-            throw new Error('Token inválido');
-        }
-    }
+
 }
 
 module.exports = new TarefaController();
